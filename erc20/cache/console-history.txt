@@ -1,4 +1,0 @@
-.exit
-exit()
-exit
-npx redspot test

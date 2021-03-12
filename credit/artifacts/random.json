@@ -1,7 +1,7 @@
 {
   "metadataVersion": "0.1.0",
   "source": {
-    "hash": "0xb2a9a4b26d5595b2b64528774c86ec132f594018f4c86b6534c6f87f4ee096bd",
+    "hash": "0x11ee8a7baca903a0b357e50a0117a8ead4f96387a341f16d71e38227d88c3264",
     "language": "ink! 3.0.0-rc3",
     "compiler": "rustc 1.52.0-nightly"
   },
@@ -31,24 +31,6 @@
       {
         "args": [],
         "docs": [],
-        "mutates": true,
-        "name": [
-          "balance_of"
-        ],
-        "payable": false,
-        "returnType": {
-          "displayName": [
-            "Result"
-          ],
-          "type": 2
-        },
-        "selector": "0x0f755a56"
-      },
-      {
-        "args": [],
-        "docs": [
-          " Simply returns the current value."
-        ],
         "mutates": false,
         "name": [
           "get"
@@ -58,7 +40,7 @@
           "displayName": [
             "Option"
           ],
-          "type": 5
+          "type": 2
         },
         "selector": "0x2f865bd9"
       }
@@ -101,60 +83,6 @@
       "def": {
         "primitive": "u128"
       }
-    },
-    {
-      "def": {
-        "variant": {
-          "variants": [
-            {
-              "fields": [
-                {
-                  "type": 3,
-                  "typeName": "T"
-                }
-              ],
-              "name": "Ok"
-            },
-            {
-              "fields": [
-                {
-                  "type": 4,
-                  "typeName": "E"
-                }
-              ],
-              "name": "Err"
-            }
-          ]
-        }
-      },
-      "params": [
-        3,
-        4
-      ],
-      "path": [
-        "Result"
-      ]
-    },
-    {
-      "def": {
-        "tuple": []
-      }
-    },
-    {
-      "def": {
-        "variant": {
-          "variants": [
-            {
-              "discriminant": 0,
-              "name": "FailGetRandomSource"
-            }
-          ]
-        }
-      },
-      "path": [
-        "random",
-        "RandomReadErr"
-      ]
     },
     {
       "def": {

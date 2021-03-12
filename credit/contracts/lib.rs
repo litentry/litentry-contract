@@ -18,11 +18,11 @@ pub trait FetchBalance {
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq, scale::Encode, scale::Decode)]
 #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
-pub enum FetchBalance {
+pub enum FetchBalanceErr {
     FailFetchBalance,
 }
 
-impl ink_env::chain_extension::FromStatusCode for RandomReadErr {
+impl ink_env::chain_extension::FromStatusCode for FetchBalanceErr {
     fn from_status_code(status_code: u32) -> Result<(), Self> {
         match status_code {
             0 => Ok(()),
@@ -46,7 +46,7 @@ impl Environment for CustomEnvironment {
     type BlockNumber = <ink_env::DefaultEnvironment as Environment>::BlockNumber;
     type Timestamp = <ink_env::DefaultEnvironment as Environment>::Timestamp;
 
-    type ChainExtension = FetchRandom;
+    type ChainExtension = FetchBalance;
 }
 
 #[ink::contract(env = crate::CustomEnvironment)]
@@ -68,13 +68,13 @@ mod credit {
             Self { value: None }
         }
 
-        #[ink(message)]
-        pub fn balance_of(&mut self) -> Result<(), RandomReadErr> {
-            self.value = self.env().extension().fetch_balance()?;
-            Ok(())
-        }
+        // #[ink(message)]
+        // pub fn balance_of(&mut self, account_id: AccountId) -> Result<(), RandomReadErr> {
+        //     self.value = self.env().extension().fetch_balance(account_id)?;
+        //     Ok(())
+        // }
 
-        /// Simply returns the current value.
+        // Simply returns the current value.
         #[ink(message)]
         pub fn get(&self) -> Option<Balance> {
             self.value
