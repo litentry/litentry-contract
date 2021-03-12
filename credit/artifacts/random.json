@@ -1,0 +1,186 @@
+{
+  "metadataVersion": "0.1.0",
+  "source": {
+    "hash": "0xb2a9a4b26d5595b2b64528774c86ec132f594018f4c86b6534c6f87f4ee096bd",
+    "language": "ink! 3.0.0-rc3",
+    "compiler": "rustc 1.52.0-nightly"
+  },
+  "contract": {
+    "name": "random",
+    "version": "3.0.0-rc2",
+    "authors": [
+      "Parity Technologies <admin@parity.io>"
+    ]
+  },
+  "spec": {
+    "constructors": [
+      {
+        "args": [],
+        "docs": [
+          "Constructor that initializes the `bool` value to the given `init_value`."
+        ],
+        "name": [
+          "new"
+        ],
+        "selector": "0x9bae9d5e"
+      }
+    ],
+    "docs": [],
+    "events": [],
+    "messages": [
+      {
+        "args": [],
+        "docs": [],
+        "mutates": true,
+        "name": [
+          "balance_of"
+        ],
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "Result"
+          ],
+          "type": 2
+        },
+        "selector": "0x0f755a56"
+      },
+      {
+        "args": [],
+        "docs": [
+          " Simply returns the current value."
+        ],
+        "mutates": false,
+        "name": [
+          "get"
+        ],
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "Option"
+          ],
+          "type": 5
+        },
+        "selector": "0x2f865bd9"
+      }
+    ]
+  },
+  "storage": {
+    "struct": {
+      "fields": [
+        {
+          "layout": {
+            "enum": {
+              "dispatchKey": "0x0000000000000000000000000000000000000000000000000000000000000000",
+              "variants": {
+                "0": {
+                  "fields": [
+                    {
+                      "layout": {
+                        "cell": {
+                          "key": "0x0100000000000000000000000000000000000000000000000000000000000000",
+                          "ty": 1
+                        }
+                      },
+                      "name": null
+                    }
+                  ]
+                },
+                "1": {
+                  "fields": []
+                }
+              }
+            }
+          },
+          "name": "value"
+        }
+      ]
+    }
+  },
+  "types": [
+    {
+      "def": {
+        "primitive": "u128"
+      }
+    },
+    {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "fields": [
+                {
+                  "type": 3,
+                  "typeName": "T"
+                }
+              ],
+              "name": "Ok"
+            },
+            {
+              "fields": [
+                {
+                  "type": 4,
+                  "typeName": "E"
+                }
+              ],
+              "name": "Err"
+            }
+          ]
+        }
+      },
+      "params": [
+        3,
+        4
+      ],
+      "path": [
+        "Result"
+      ]
+    },
+    {
+      "def": {
+        "tuple": []
+      }
+    },
+    {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "discriminant": 0,
+              "name": "FailGetRandomSource"
+            }
+          ]
+        }
+      },
+      "path": [
+        "random",
+        "RandomReadErr"
+      ]
+    },
+    {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "name": "None"
+            },
+            {
+              "fields": [
+                {
+                  "type": 1,
+                  "typeName": "T"
+                }
+              ],
+              "name": "Some"
+            }
+          ]
+        }
+      },
+      "params": [
+        1
+      ],
+      "path": [
+        "Option"
+      ]
+    }
+  ]
+}

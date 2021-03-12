@@ -1,0 +1,194 @@
+{
+  "metadataVersion": "0.1.0",
+  "source": {
+    "hash": "0x04402b48cecc0d6fc7473b9af0c180c8d99528d7c0e8df2d69937a2f68d2a958",
+    "language": "ink! 3.0.0-rc3",
+    "compiler": "rustc 1.52.0-nightly"
+  },
+  "contract": {
+    "name": "erc20",
+    "version": "3.0.0-rc2",
+    "authors": [
+      "Parity Technologies <admin@parity.io>"
+    ]
+  },
+  "spec": {
+    "constructors": [
+      {
+        "args": [
+          {
+            "name": "init_value",
+            "type": {
+              "displayName": [],
+              "type": 2
+            }
+          }
+        ],
+        "docs": [
+          "Constructor that initializes the `bool` value to the given `init_value`."
+        ],
+        "name": [
+          "new"
+        ],
+        "selector": "0x9bae9d5e"
+      },
+      {
+        "args": [],
+        "docs": [
+          "Constructor that initializes the `bool` value to `false`.",
+          "",
+          "Constructors can delegate to other constructors."
+        ],
+        "name": [
+          "default"
+        ],
+        "selector": "0xed4b9d1b"
+      }
+    ],
+    "docs": [],
+    "events": [
+      {
+        "args": [
+          {
+            "docs": [],
+            "indexed": true,
+            "name": "new",
+            "type": {
+              "displayName": [],
+              "type": 2
+            }
+          }
+        ],
+        "docs": [],
+        "name": "RandomUpdated"
+      }
+    ],
+    "messages": [
+      {
+        "args": [],
+        "docs": [
+          " update the value from runtime random source"
+        ],
+        "mutates": true,
+        "name": [
+          "update"
+        ],
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "Result"
+          ],
+          "type": 3
+        },
+        "selector": "0x5f234f5d"
+      },
+      {
+        "args": [],
+        "docs": [
+          " Simply returns the current value."
+        ],
+        "mutates": false,
+        "name": [
+          "get"
+        ],
+        "payable": false,
+        "returnType": {
+          "displayName": [],
+          "type": 2
+        },
+        "selector": "0x2f865bd9"
+      }
+    ]
+  },
+  "storage": {
+    "struct": {
+      "fields": [
+        {
+          "layout": {
+            "array": {
+              "cellsPerElem": 1,
+              "layout": {
+                "cell": {
+                  "key": "0x2000000000000000000000000000000000000000000000000000000000000000",
+                  "ty": 1
+                }
+              },
+              "len": 32,
+              "offset": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          },
+          "name": "value"
+        }
+      ]
+    }
+  },
+  "types": [
+    {
+      "def": {
+        "primitive": "u8"
+      }
+    },
+    {
+      "def": {
+        "array": {
+          "len": 32,
+          "type": 1
+        }
+      }
+    },
+    {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "fields": [
+                {
+                  "type": 4,
+                  "typeName": "T"
+                }
+              ],
+              "name": "Ok"
+            },
+            {
+              "fields": [
+                {
+                  "type": 5,
+                  "typeName": "E"
+                }
+              ],
+              "name": "Err"
+            }
+          ]
+        }
+      },
+      "params": [
+        4,
+        5
+      ],
+      "path": [
+        "Result"
+      ]
+    },
+    {
+      "def": {
+        "tuple": []
+      }
+    },
+    {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "discriminant": 0,
+              "name": "FailGetRandomSource"
+            }
+          ]
+        }
+      },
+      "path": [
+        "erc20",
+        "RandomReadErr"
+      ]
+    }
+  ]
+}
