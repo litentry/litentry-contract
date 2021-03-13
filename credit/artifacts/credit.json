@@ -1,7 +1,7 @@
 {
   "metadataVersion": "0.1.0",
   "source": {
-    "hash": "0xa751e8676d7a2ef8f9a4cfd766806e304a0fd99a0b541b7d03a47a10630362b4",
+    "hash": "0x478ef15a378ab6856b3d5a3c81d0817d0228d4872d2f12957414415b88c2b235",
     "language": "ink! 3.0.0-rc3",
     "compiler": "rustc 1.52.0-nightly"
   },
@@ -63,9 +63,7 @@
         ],
         "payable": false,
         "returnType": {
-          "displayName": [
-            "Option"
-          ],
+          "displayName": [],
           "type": 8
         },
         "selector": "0x2f865bd9"
@@ -77,26 +75,61 @@
       "fields": [
         {
           "layout": {
-            "enum": {
-              "dispatchKey": "0x0000000000000000000000000000000000000000000000000000000000000000",
-              "variants": {
-                "0": {
-                  "fields": [
-                    {
-                      "layout": {
-                        "cell": {
-                          "key": "0x0100000000000000000000000000000000000000000000000000000000000000",
-                          "ty": 1
+            "struct": {
+              "fields": [
+                {
+                  "layout": {
+                    "enum": {
+                      "dispatchKey": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                      "variants": {
+                        "0": {
+                          "fields": [
+                            {
+                              "layout": {
+                                "cell": {
+                                  "key": "0x0100000000000000000000000000000000000000000000000000000000000000",
+                                  "ty": 1
+                                }
+                              },
+                              "name": null
+                            }
+                          ]
+                        },
+                        "1": {
+                          "fields": []
                         }
-                      },
-                      "name": null
+                      }
                     }
-                  ]
+                  },
+                  "name": null
                 },
-                "1": {
-                  "fields": []
+                {
+                  "layout": {
+                    "enum": {
+                      "dispatchKey": "0x0100000000000000000000000000000000000000000000000000000000000000",
+                      "variants": {
+                        "0": {
+                          "fields": [
+                            {
+                              "layout": {
+                                "cell": {
+                                  "key": "0x0200000000000000000000000000000000000000000000000000000000000000",
+                                  "ty": 1
+                                }
+                              },
+                              "name": null
+                            }
+                          ]
+                        },
+                        "1": {
+                          "fields": []
+                        }
+                      }
+                    }
+                  },
+                  "name": null
                 }
-              }
+              ]
             }
           },
           "name": "value"
@@ -193,6 +226,14 @@
         "credit",
         "FetchBalanceErr"
       ]
+    },
+    {
+      "def": {
+        "tuple": [
+          9,
+          9
+        ]
+      }
     },
     {
       "def": {

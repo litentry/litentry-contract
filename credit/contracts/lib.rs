@@ -11,10 +11,11 @@ pub trait FetchBalance {
 
     /// Note: this gives the operation a corresponding func_id (1101 in this case),
     /// and the chain-side chain_extension will get the func_id to do further operations.
-    #[ink(extension = 1101, returns_result = false)]
+    #[ink(extension = 1001, returns_result = false)]
     // fn fetch_balance(account_id: <ink_env::DefaultEnvironment as Environment>::AccountId) ->
-    fn fetch_balance() -> 
-        Option<<ink_env::DefaultEnvironment as Environment>::Balance>;
+    fn fetch_balance(account_id: <ink_env::DefaultEnvironment as Environment>::AccountId) -> 
+        (Option<<ink_env::DefaultEnvironment as Environment>::Balance>,
+        Option<<ink_env::DefaultEnvironment as Environment>::Balance>);
 }
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq, scale::Encode, scale::Decode)]
@@ -59,27 +60,27 @@ mod credit {
     #[ink(storage)]
     pub struct CreditExtension {
         /// Stores a balance value on the storage.
-        value: Option<Balance>,
+        value: (Option<Balance>, Option<Balance>)
     }
 
     impl CreditExtension {
         /// Constructor that initializes the value as None.
         #[ink(constructor)]
         pub fn new() -> Self {
-            Self { value: None }
+            Self { value: (None, None) }
         }
 
         #[ink(message)]
         pub fn balance_of(&mut self, account_id: AccountId) -> Result<(), FetchBalanceErr> {
             // self.value = self.env().extension().fetch_balance(account_id)?;
-            self.value = self.env().extension().fetch_balance()?;
+            self.value = self.env().extension().fetch_balance(account_id)?;
 
             Ok(())
         }
 
         // Simply returns the current value.
         #[ink(message)]
-        pub fn get(&self) -> Option<Balance> {
+        pub fn get(&self) -> (Option<Balance>, Option<Balance>) {
             self.value
         }
     }
@@ -96,7 +97,7 @@ mod credit {
         fn default_works() {
             let mut rand_extension = CreditExtension::new();
             // assert_eq!(rand_extension.balance_of(), Ok(()));
-            assert_eq!(rand_extension.get(), None);
+            assert_eq!(rand_extension.get(), (None, None));
         }
     }
 }

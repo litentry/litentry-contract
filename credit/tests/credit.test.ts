@@ -24,11 +24,19 @@ describe('Credit', () => {
     return { sender, contractFactory, contract, abi, receiver, Alice, one };
   }
 
-  it('Assigns initial balance', async () => {
+  it('Get the btc and eth balance', async () => {
     const { contract, sender } = await setup();
-    const result = await contract.query.balanceOf(sender.address);
-    const balance = result.output.toString()
-    expect(balance).to.equal("{\"Ok\":[]}");
+    const result = await contract.tx.balanceOf(sender.address);
+    console.log("result is", result);
+    expect(result["result"]["dispatchError"]).to.equal(undefined);
+
+    const balances = await contract.query.get();
+
+    const btc_balance = balances.output[0].toString();
+    expect(btc_balance).to.equal("1");
+
+    const eth_balance = balances.output[1].toString();
+    expect(eth_balance).to.equal("1");
   });
 
 });
