@@ -11,8 +11,9 @@ pub trait FetchBalance {
 
     /// Note: this gives the operation a corresponding func_id (1101 in this case),
     /// and the chain-side chain_extension will get the func_id to do further operations.
-    #[ink(extension = 001, returns_result = false)]
-    fn fetch_balance(account_id: <ink_env::DefaultEnvironment as Environment>::AccountId) -> 
+    #[ink(extension = 1101, returns_result = false)]
+    // fn fetch_balance(account_id: <ink_env::DefaultEnvironment as Environment>::AccountId) ->
+    fn fetch_balance() -> 
         Option<<ink_env::DefaultEnvironment as Environment>::Balance>;
 }
 
@@ -57,22 +58,24 @@ mod credit {
     /// Here we store the credit seed fetched from the chain
     #[ink(storage)]
     pub struct CreditExtension {
-        /// Stores a single `bool` value on the storage.
+        /// Stores a balance value on the storage.
         value: Option<Balance>,
     }
 
     impl CreditExtension {
-        /// Constructor that initializes the `bool` value to the given `init_value`.
+        /// Constructor that initializes the value as None.
         #[ink(constructor)]
         pub fn new() -> Self {
             Self { value: None }
         }
 
-        // #[ink(message)]
-        // pub fn balance_of(&mut self, account_id: AccountId) -> Result<(), RandomReadErr> {
-        //     self.value = self.env().extension().fetch_balance(account_id)?;
-        //     Ok(())
-        // }
+        #[ink(message)]
+        pub fn balance_of(&mut self, account_id: AccountId) -> Result<(), FetchBalanceErr> {
+            // self.value = self.env().extension().fetch_balance(account_id)?;
+            self.value = self.env().extension().fetch_balance()?;
+
+            Ok(())
+        }
 
         // Simply returns the current value.
         #[ink(message)]

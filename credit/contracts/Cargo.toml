@@ -1,5 +1,5 @@
 [package]
-name = "random"
+name = "credit"
 version = "3.0.0-rc2"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2018"
@@ -18,7 +18,7 @@ scale-info = { version = "0.6", default-features = false, features = ["derive"],
 funty = "=1.1.0"
 
 [lib]
-name = "random"
+name = "credit"
 path = "lib.rs"
 crate-type = ["cdylib"]
 

@@ -15,9 +15,9 @@ describe('Credit', () => {
     const one = new BN(10).pow(new BN(api.registry.chainDecimals[0]));
     const signers = await getSigners();
     const Alice = signers[0];
-    const sender = await getRandomSigner(Alice, one.muln(10000));
+    const sender = await getRandomSigner(Alice, one.muln(1000));
     const contractFactory = await getContractFactory('credit', sender);
-    const contract = await contractFactory.deploy('new', '1000');
+    const contract = await contractFactory.deploy('new');
     const abi = artifacts.readArtifact('credit');
     const receiver = await getRandomSigner();
 
@@ -26,11 +26,9 @@ describe('Credit', () => {
 
   it('Assigns initial balance', async () => {
     const { contract, sender } = await setup();
-    const get = await contract.query.get();
-    expect(get.output).to.equal("");
-    await contract.tx.balance_of();
-    const second_get = await contract.query.get();
-    expect(second_get.output).to.equal("");
+    const result = await contract.query.balanceOf(sender.address);
+    const balance = result.output.toString()
+    expect(balance).to.equal("{\"Ok\":[]}");
   });
 
 });

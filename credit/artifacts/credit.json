@@ -1,12 +1,12 @@
 {
   "metadataVersion": "0.1.0",
   "source": {
-    "hash": "0xb96cfdd827600c875cebee08fe53b3537c8db9a0355cc27d43585907ad9cc23f",
+    "hash": "0xa751e8676d7a2ef8f9a4cfd766806e304a0fd99a0b541b7d03a47a10630362b4",
     "language": "ink! 3.0.0-rc3",
     "compiler": "rustc 1.52.0-nightly"
   },
   "contract": {
-    "name": "random",
+    "name": "credit",
     "version": "3.0.0-rc2",
     "authors": [
       "Parity Technologies <admin@parity.io>"
@@ -17,7 +17,7 @@
       {
         "args": [],
         "docs": [
-          "Constructor that initializes the `bool` value to the given `init_value`."
+          "Constructor that initializes the value as None."
         ],
         "name": [
           "new"
@@ -190,7 +190,7 @@
         }
       },
       "path": [
-        "random",
+        "credit",
         "FetchBalanceErr"
       ]
     },
