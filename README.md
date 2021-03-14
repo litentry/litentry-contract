@@ -12,6 +12,7 @@ release/target/europa --tmp
 
 ## build environment
 1. install nodejs, yarn and redspot
+cd credit
 yarn add respot 
 
 2. install ink
