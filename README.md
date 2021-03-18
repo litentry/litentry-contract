@@ -5,23 +5,33 @@ The repo gives an example contract how to use the data from Litentry network to 
 With [europa](https://github.com/patractlabs/europa), you can test the contract without deployment in the Litentry blockchain. Europa provide the service of sandbox environment of substrate runtime. For the pallets of Litentry specific, we need extend the europe smart contract pallet implementation. Details could be found in the litentry branch.
 
 git clone submodule --recursive https://github.com/litentry/europa
+
 git checkout litentry
+
 cd europa
+
 make release
+
 release/target/europa --tmp
 
 ## build environment
-1. install nodejs, yarn and redspot
+### install nodejs, yarn and redspot
+
 cd credit
+
 yarn add respot 
 
-2. install ink
+### install ink
+
 cargo install cargo-contract --force
 
-3. build contract
+### build contract
+
 cd credit
+
 yarn build
 
 ## test contract
 cd credit
+
 yarn test
