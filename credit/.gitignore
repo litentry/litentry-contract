@@ -13,3 +13,7 @@ node_modules
 
 # macOS
 .DS_Store
+
+artifacts
+
+node_modules
